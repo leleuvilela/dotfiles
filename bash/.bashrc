@@ -1,7 +1,7 @@
 # Enable the subsequent settings only in interactive sessions
 case $- in
-  *i*) ;;
-    *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 # Path to your oh-my-bash installation.
@@ -20,11 +20,6 @@ NVIM_FOLDER="~/.dotfiles/nvim/.config/nvim/"
 # No error beep
 set opt no_beep
 
-# dotnet 
-export DOTNET_ROOT="/home/$USER/.dotnet"
-
-export PATH=$PATH:/home/$USER/.dotnet:~/.dotnet/tools
-
 # fzf
 source /usr/share/fzf/shell/key-bindings.bash
 
@@ -41,13 +36,13 @@ alias fh='history | fzf --tac | awk '\''{$1=""; print $0}'\'' | xargs -r -I{} fc
 OMB_USE_SUDO=true
 
 completions=(
-  git
-  composer
-  ssh
+	git
+	composer
+	ssh
 )
 
 aliases=(
-  general
+	general
 )
 
 #aliases
@@ -65,8 +60,8 @@ alias lzd='lazydocker'
 alias us='~/.dotfiles/scripts/usersecrets.sh'
 
 plugins=(
-  git
-  bashmarks
+	git
+	bashmarks
 )
 
 source /etc/profile.d/bash_completion.sh

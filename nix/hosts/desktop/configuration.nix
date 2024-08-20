@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../hosts/desktop/users/tuliopaim
+      ../../hosts/desktop/users/vinicius
       ../../system/sddm
       ../../system/nix.nix
       ../../system/boot.nix
@@ -15,6 +15,7 @@
       ../../system/redshift.nix
       ../../system/fonts.nix
       ../../system/via.nix
+      ../../system/firewall.nix
     ];
 
   environment = {
@@ -27,6 +28,10 @@
       home-manager
     ];
   };
+
+  services.gvfs.enable = true;
+  services.devmon.enable = true;
+  services.udisks2.enable = true;
 
   system.stateVersion = "24.05";
 

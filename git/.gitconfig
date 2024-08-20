@@ -1,9 +1,9 @@
 [user]
-	name = tuliopaim
+	name = leleuvilela
 [includeIf "gitdir:~/dev/personal/"]
   path = .gitconfig-personal
-[includeIf "gitdir:~/dev/tb/"]
-  path = .gitconfig-tb
+[includeIf "gitdir:~/dev/farfetch/"]
+  path = .gitconfig-farfetch
 
 [core]
 	editor = nvim

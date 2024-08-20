@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   imports = [
     ./git
@@ -23,15 +23,13 @@
     libreoffice
     gnome.gnome-disk-utility
     gnome.gnome-calculator
+    gnome.adwaita-icon-theme
     mongodb-compass
     vesktop
     virtualbox
     woeusb
-
-    #qmk
-    qmk
-    via
-    vial
-    keymapviz
+    vscode
+    blueman
+    solaar
   ];
 }

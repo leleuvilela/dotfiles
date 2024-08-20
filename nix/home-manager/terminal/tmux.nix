@@ -73,7 +73,7 @@
         
         bind-key -r f run-shell "tmux neww tmux-sessionizer"
         
-        bind-key -r H run-shell "~/.local/bin/tmux-sessionizer ~/dev/tb/ems"
+        bind-key -r H run-shell "~/.local/bin/tmux-sessionizer ~/.dotfiles"
         
         # remove default binding since replacing
         unbind %

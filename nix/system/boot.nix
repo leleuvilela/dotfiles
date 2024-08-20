@@ -1,9 +1,5 @@
 {
-  boot = {
-    kernel.sysctl."fs.inotify.max_user_instances" = 524288;
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/nvme1n1";
+  boot.loader.grub.useOSProber = true;
 }

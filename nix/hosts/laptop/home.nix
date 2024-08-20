@@ -11,7 +11,6 @@
     ../../home-manager/apps/brightness.nix
     ../../home-manager/terminal
     ../../home-manager/dev
-    ../../home-manager/dev/dotnet
   ];
 
   programs = {

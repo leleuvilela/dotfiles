@@ -10,7 +10,6 @@
     ../../home-manager/apps
     ../../home-manager/terminal
     ../../home-manager/dev
-    ../../home-manager/dev/dotnet
   ];
 
   programs = {

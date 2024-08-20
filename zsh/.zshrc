@@ -41,16 +41,15 @@ alias k='kubectl'
 
 alias lg='lazygit'
 alias lzd='lazydocker'
-alias us='~/.dotfiles/scripts/usersecrets.sh'
 
-export PATH="/home/tuliopaim/.local/bin:$PATH"
+export PATH="/home/vinicius/.local/bin:$PATH"
 
 # dotnet 
 export DOTNET_ROOT="/home/$USER/.dotnet"
 export PATH=$PATH:/home/$USER/.dotnet:~/.dotnet/tools
 
 # fnm
-export PATH="/home/tuliopaim/.local/share/fnm:$PATH"
+export PATH="/home/vinicius/.local/share/fnm:$PATH"
 eval "`fnm env`"
 
 eval "$(zoxide init zsh)"

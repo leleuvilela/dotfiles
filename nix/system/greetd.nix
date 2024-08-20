@@ -4,7 +4,7 @@
     settings = {
       initial_session = {
         command = "Hyprland";
-        user = "tuliopaim";
+        user = "vinicius";
       };
       default_session = {
         command = "initial_session";

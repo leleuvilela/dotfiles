@@ -21,6 +21,10 @@
     postgresql
     postgresql_jdbc
     typescript
+    glib
+    glibc
+    openjdk
+    postman
   ];
 
   home.sessionVariables = {

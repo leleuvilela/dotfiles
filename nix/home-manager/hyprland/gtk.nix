@@ -14,8 +14,10 @@
     };
     theme = {
       name = "Adwaita-dark";
+      size = 32;
       package = pkgs.gnome.gnome-themes-extra;
     };
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
@@ -24,6 +26,8 @@
     gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Adwaita-dark
+        gtk-cursor-theme-size=32
       '';
     };
 
@@ -47,5 +51,6 @@
 
 
   home.sessionVariables.GTK_THEME = "Adwaita-dark";
+  environment.variables.XCURSOR_SIZE = "32";
 }
 

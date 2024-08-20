@@ -43,8 +43,6 @@
 
       export PATH="~/.local/bin:$PATH"
 
-      export PATH=$PATH:/home/$USER/.dotnet:~/.dotnet/tools
-
       function yy() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
         yazi "$@" --cwd-file="$tmp"

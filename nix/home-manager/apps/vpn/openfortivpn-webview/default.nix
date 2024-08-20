@@ -13,9 +13,9 @@ pkgs.mkShell {
   ];
 
   shellHook = ''
-    appimage-run ${openfortivpn-webview} vpn.emsbilling.com \
+    appimage-run ${openfortivpn-webview} farfetchvpn.farfetchcorp.com \
         | grep SVPNCOOKIE \
-        | sudo openfortivpn vpn.emsbilling.com \
+        | sudo openfortivpn farfetchvpn.farfetchcorp.com \
         --trusted-cert=6fa8089ba148f8dd65720bdaa62dc7a52e6ab9b135661fddfe6dbacd7f294ddb \
         --cookie-on-stdin &
   '';

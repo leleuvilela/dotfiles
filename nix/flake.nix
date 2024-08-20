@@ -33,20 +33,21 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
-          username = "tuliopaim";
+          username = "vinicius";
           hostname = "nixos";
+          pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true;};
         };
         modules = [
           ./hosts/desktop/configuration.nix
         ];
       };
 
-      homeConfigurations."tuliopaim" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."vinicius" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
           inherit inputs outputs;
           inherit pkgs-unstable;
-          username = "tuliopaim";
+          username = "vinicius";
           hyprlandProfile = "desktop";
         };
         modules = [

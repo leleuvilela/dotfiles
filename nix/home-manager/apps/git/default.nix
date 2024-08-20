@@ -7,8 +7,8 @@
     };
     extraConfig = {
       user = {
-        name = "tuliopaim";
-        email = "tutpaim@gmail.com";
+        name = "vinicius";
+        email = "viniciusvilela19@gmail.com";
       };
       core = {
         editor = "nvim";
@@ -32,18 +32,18 @@
         condition = "gitdir:~/dev/personal/";
         contents = {
           user = {
-            name = "tuliopaim";
-            email = "tutpaim@gmail.com";
+            name = "vinicius";
+            email = "viniciusvilela19@gmail.com";
           };
         };
       }
       {
 
-        condition = "gitdir:~/dev/tb/";
+        condition = "gitdir:~/dev/farfetch/";
         contents = {
           user = {
-            name = "tuliopaim";
-            email = "tulio.p@thinkbridge.com";
+            name = "vinicius";
+            email = "ext.vinicius.nunes@farfetch.com";
           };
         };
       }

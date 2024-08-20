@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../hosts/desktop/users/tuliopaim
+      ../../hosts/desktop/users/vinicius
       ../../system/sddm
       ../../system/nix.nix
       ../../system/boot.nix

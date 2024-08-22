@@ -4,7 +4,7 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font";
-      size = 15;
+      size = 12;
     };
     theme = "Catppuccin-Mocha";
     shellIntegration = {

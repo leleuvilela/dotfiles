@@ -12,10 +12,16 @@
       name = "LiberationSerif-Regular";
       size = 12;
     };
+
     theme = {
       name = "Adwaita-dark";
-      size = 32;
       package = pkgs.gnome.gnome-themes-extra;
+    };
+
+    cursorTheme = {
+        name = "Adwaita";
+        size = 28;
+        package = pkgs.gnome.adwaita-icon-theme;
     };
 
     iconTheme = {
@@ -27,13 +33,15 @@
       Settings = ''
         gtk-application-prefer-dark-theme=1
         gtk-cursor-theme-name=Adwaita-dark
-        gtk-cursor-theme-size=32
+        gtk-cursor-theme-size=28
       '';
     };
 
     gtk4.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
+        gtk-cursor-theme-name=Adwaita-dark
+        gtk-cursor-theme-size=28
       '';
     };
   };
@@ -51,6 +59,5 @@
 
 
   home.sessionVariables.GTK_THEME = "Adwaita-dark";
-  environment.variables.XCURSOR_SIZE = "32";
 }
 

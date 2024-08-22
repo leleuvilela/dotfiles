@@ -20,6 +20,8 @@
 
   environment = {
     variables.EDITOR = "nvim";
+    variables.XCURSOR_SIZE = "28";
+    variables.XCURSOR_THEME = "Adwaita";
     systemPackages = with pkgs; [
       vim
       neovim

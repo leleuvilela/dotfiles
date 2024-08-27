@@ -6,7 +6,6 @@
       ../../hosts/desktop/users/vinicius
       ../../system/sddm
       ../../system/nix.nix
-      ../../system/boot.nix
       ../../system/hyprland.nix
       ../../system/locale.nix
       ../../system/docker.nix
@@ -17,8 +16,14 @@
       ../../system/via.nix
     ];
 
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   environment = {
     variables.EDITOR = "nvim";
+    variables.XCURSOR_SIZE = "28";
+    variables.XCURSOR_THEME = "Adwaita";
     systemPackages = with pkgs; [
       vim
       neovim
@@ -27,6 +32,10 @@
       home-manager
     ];
   };
+
+  services.gvfs.enable = true;
+  services.devmon.enable = true;
+  services.udisks2.enable = true;
 
   system.stateVersion = "24.05";
 

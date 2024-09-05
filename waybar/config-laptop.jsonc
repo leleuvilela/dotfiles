@@ -9,7 +9,7 @@
         "custom/pipe",
         "cpu",
         "memory",
-        "temperature",
+        "temperature"
     ],
     "modules-center": [
         "hyprland/window"
@@ -148,15 +148,26 @@
                 "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
                 "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-        },
+        }
     },
     "backlight": {
         "device": "intel_backlight",
         "format": "<span color='#2da14c'>{icon}</span> {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
         "on-scroll-up": "brightnessctl set +2%",
         "on-scroll-down": "brightnessctl set 2%-",
-        "interval": 2
+        "interval": 2,
+        "tooltip": false
     },
     // CPU
     "cpu": {

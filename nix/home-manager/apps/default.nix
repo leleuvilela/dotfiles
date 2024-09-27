@@ -4,6 +4,7 @@
     ./git
     ./browser
     ./vpn
+    ./brightness.nix
   ];
 
   home.packages = with pkgs; [

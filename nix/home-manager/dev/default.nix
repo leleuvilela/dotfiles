@@ -25,9 +25,13 @@
     glibc
     openjdk
     postman
+    playwright-driver.browsers
+    chromium
   ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+    PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
   };
 }

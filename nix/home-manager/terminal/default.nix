@@ -43,5 +43,6 @@
     devenv
     w3m
     browsh
+    fastfetch
   ];
 }

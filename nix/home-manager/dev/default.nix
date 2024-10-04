@@ -23,7 +23,7 @@
     typescript
     glib
     glibc
-    openjdk
+    jdk
     postman
     playwright-driver.browsers
     chromium

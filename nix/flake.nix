@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
   };
 
   outputs =
@@ -15,6 +16,7 @@
     , nixpkgs
     , home-manager
     , nixpkgs-unstable
+    , zen-browser
     , ...
     } @ inputs:
     let
@@ -47,6 +49,7 @@
         extraSpecialArgs = {
           inherit inputs outputs;
           inherit pkgs-unstable;
+          inherit zen-browser;
           username = "vinicius";
           hyprlandProfile = "desktop";
         };

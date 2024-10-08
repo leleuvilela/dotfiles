@@ -27,6 +27,10 @@
     postman
     playwright-driver.browsers
     chromium
+
+    #raspbery
+    rpiboot
+    rpi-imager
   ];
 
   home.sessionVariables = {

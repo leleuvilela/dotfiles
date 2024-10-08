@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-unstable, zen-browser, ... }:
 {
   imports = [
     ./git
@@ -32,5 +32,6 @@
     vscode
     blueman
     solaar
+    zen-browser.packages.x86_64-linux.default
   ];
 }

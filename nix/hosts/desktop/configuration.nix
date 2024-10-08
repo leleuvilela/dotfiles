@@ -15,7 +15,7 @@
       ../../system/redshift.nix
       ../../system/fonts.nix
       ../../system/via.nix
-      ../../system/firewall.nix
+      ../../system/network.nix
     ];
 
   environment = {

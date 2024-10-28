@@ -9,7 +9,6 @@
 
   home.packages = with pkgs; [
     cinnamon.nemo-with-extensions
-    spotify
     slack
     obsidian
     pavucontrol
@@ -33,5 +32,8 @@
     blueman
     solaar
     zen-browser.packages.x86_64-linux.default
+    atlauncher
+    cider
+    mission-center
   ];
 }

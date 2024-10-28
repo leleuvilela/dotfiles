@@ -43,6 +43,8 @@
 
       export PATH="~/.local/bin:$PATH"
 
+      export NIXPKGS_ALLOW_UNFREE=1
+
       function yy() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
         yazi "$@" --cwd-file="$tmp"

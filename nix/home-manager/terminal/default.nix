@@ -44,5 +44,6 @@
     w3m
     browsh
     fastfetch
+    appimage-run
   ];
 }

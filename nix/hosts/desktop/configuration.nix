@@ -34,6 +34,7 @@
   services.gvfs.enable = true;
   services.devmon.enable = true;
   services.udisks2.enable = true;
+  services.systembus-notify.enable = true;
 
   system.stateVersion = "24.05";
 

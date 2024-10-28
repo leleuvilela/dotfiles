@@ -1,11 +1,8 @@
 {
     "layer": "top", // Waybar at top layer
-    "height": 25, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": [
-        "hyprland/workspaces",
-        "custom/pipe",
-        "group/links"
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "hyprland/window"
@@ -16,6 +13,7 @@
         "memory",
         "temperature",
         "clock",
+        "custom/notification",
         "custom/power",
         "tray"
     ],
@@ -42,6 +40,27 @@
             "8": "8", // brush
             "9": "9" // random
         }
+    },
+    // swaync
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "󱅫 ",
+            "none": " ",
+            "dnd-notification": " ",
+            "dnd-none": "󰂛 ",
+            "inhibited-notification": " ",
+            "inhibited-none": " ",
+            "dnd-inhibited-notification": " ",
+            "dnd-inhibited-none": " "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
     },
     // Hyprland Window
     "hyprland/window": {
@@ -145,7 +164,7 @@
                 "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
                 "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-        },
+        }
     },
     // CPU
     "cpu": {

@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCode Nerd Font";
+      name = "Caskaydia Cove Nerd Font";
       size = 12;
     };
     theme = "Catppuccin-Mocha";

@@ -35,5 +35,6 @@
     atlauncher
     cider
     mission-center
+    steam
   ];
 }

@@ -1,21 +1,18 @@
 {
     "layer": "top", // Waybar at top layer
-    "height": 25, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": [
-        "hyprland/workspaces",
-        "custom/pipe",
-        "group/links",
-        "custom/pipe",
-        "cpu",
-        "memory",
-        "temperature"
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "hyprland/window"
     ],
     "modules-right": [
+        "custom/notification",
         "pulseaudio",
+        "cpu",
+        "memory",
+        "temperature",
         "clock",
         "backlight",
         "battery",
@@ -45,6 +42,27 @@
             "8": "8", // brush
             "9": "9" // random
         }
+    },
+    // swaync
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{} {icon}",
+        "format-icons": {
+            "notification": "󱅫 ",
+            "none": " ",
+            "dnd-notification": " ",
+            "dnd-none": "󰂛 ",
+            "inhibited-notification": " ",
+            "inhibited-none": " ",
+            "dnd-inhibited-notification": " ",
+            "dnd-inhibited-none": " "
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "sleep 0.1 && swaync-client -t -sw",
+        "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+        "escape": true
     },
     // Hyprland Window
     "hyprland/window": {
@@ -150,25 +168,6 @@
             }
         }
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "<span color='#2da14c'>{icon}</span> {percent}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "on-scroll-up": "brightnessctl set +2%",
-        "on-scroll-down": "brightnessctl set 2%-",
-        "interval": 2,
-        "tooltip": false
-    },
     // CPU
     "cpu": {
         "format": "{usage}% ",
@@ -203,7 +202,7 @@
             "critical": 15
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰂄",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": [
@@ -216,6 +215,25 @@
     },
     "battery#bat2": {
         "bat": "BAT2"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "<span color='#2da14c'>{icon}</span> {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-scroll-up": "brightnessctl set +2%",
+        "on-scroll-down": "brightnessctl set 2%-",
+        "interval": 2,
+        "tooltip": false
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",

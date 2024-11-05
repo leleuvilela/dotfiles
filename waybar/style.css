@@ -66,6 +66,8 @@ button:hover {
 #tray,
 #network,
 #mode,
+#custom-power,
+#custom-notification,
 #scratchpad {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -107,6 +109,11 @@ button:hover {
 #battery {
     color: @green;
     border-bottom: 2px solid @green;
+}
+
+#custom-notification {
+    color: @pink;
+    border-bottom: 2px solid @pink;
 }
 
 /* If workspaces is the leftmost module, omit left margin */

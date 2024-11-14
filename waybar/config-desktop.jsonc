@@ -8,12 +8,12 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "custom/notification",
         "pulseaudio",
         "cpu",
         "memory",
         "temperature",
         "clock",
-        "custom/notification",
         "custom/power",
         "tray"
     ],

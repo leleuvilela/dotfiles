@@ -10,6 +10,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
+    nix-ld.url = "github:Mic92/nix-ld";
+    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -19,6 +21,7 @@
     , nixpkgs-unstable
     , zen-browser
     , catppuccin
+    , nix-ld
     , ...
     } @ inputs:
     let
@@ -42,6 +45,7 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true;};
         };
         modules = [
+          nix-ld.nixosModules.nix-ld
           ./hosts/desktop/configuration.nix
         ];
       };

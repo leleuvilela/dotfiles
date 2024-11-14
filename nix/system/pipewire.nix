@@ -1,5 +1,4 @@
 {
-  sound.enable = true;
   nixpkgs.config.pulseaudio = true;
   security.rtkit.enable = true;
 

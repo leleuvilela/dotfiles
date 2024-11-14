@@ -21,12 +21,12 @@
     postgresql
     postgresql_jdbc
     typescript
-    glib
-    glibc
     jdk
     postman
     playwright-driver.browsers
     chromium
+    electron-fiddle
+    electron
 
     #raspbery
     rpiboot

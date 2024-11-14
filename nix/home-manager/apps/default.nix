@@ -36,5 +36,6 @@
     cider
     mission-center
     steam
+    morgen
   ];
 }

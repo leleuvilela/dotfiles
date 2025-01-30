@@ -23,6 +23,7 @@
     fd
     fzf
     htop
+    btop
     ripgrep
     tree
     unzip
@@ -45,5 +46,7 @@
     browsh
     fastfetch
     appimage-run
+    genact
+    openssl
   ];
 }

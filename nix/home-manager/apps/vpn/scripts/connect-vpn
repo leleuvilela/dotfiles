@@ -6,8 +6,8 @@ sudo .
 
 nix-shell --command zsh
 
-appimage-run openfortivpn-webview farfetchvpn.farfetchcorp.com |
+appimage-run openfortivpn-webview vpn.criticalsoftware.com |
 	grep SVPNCOOKIE |
-	sudo openfortivpn farfetchvpn.farfetchcorp.com \
+	sudo openfortivpn vpn.criticalsoftware.com \
 		--trusted-cert=0a8e5703f0283e9d60ed495fe78eb221eef36841ca83046acf52586d73c54b7c \
 		--cookie-on-stdin &

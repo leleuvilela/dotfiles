@@ -37,5 +37,6 @@
     mission-center
     steam
     morgen
+    networkmanager
   ];
 }

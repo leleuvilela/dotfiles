@@ -38,5 +38,6 @@
     steam
     morgen
     networkmanager
+    spotify
   ];
 }

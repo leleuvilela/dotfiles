@@ -48,5 +48,8 @@
     appimage-run
     genact
     openssl
+    cargo
+    gnumake
+    hub
   ];
 }

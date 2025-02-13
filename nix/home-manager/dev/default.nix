@@ -27,6 +27,7 @@
     chromium
     electron-fiddle
     electron
+    pkgs-unstable.mockoon
 
     #raspbery
     rpiboot

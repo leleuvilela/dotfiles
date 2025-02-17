@@ -45,8 +45,8 @@
 
       export NIXPKGS_ALLOW_UNFREE=1
       export NIXPKGS_ALLOW_INSECURE=1
-
-      export ANTHROPIC_API_KEY=nope
+      
+      source ~/.env.sh
 
       function yy() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"

@@ -29,6 +29,8 @@
     electron
     pkgs-unstable.mockoon
 
+    maven
+
     #raspbery
     rpiboot
     rpi-imager

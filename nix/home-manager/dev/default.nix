@@ -4,7 +4,6 @@
     # langs
     (lib.hiPrio gcc)
     (lib.lowPrio clang)
-    cargo
     nodejs
     yarn
 

@@ -5,7 +5,7 @@ if [[ $# -eq 1 ]]; then
 else
 	selected=$(find \
 		~/.dotfiles/ \
-		~/dev/navigator/ \
+		~/dev/metyis/ \
 		~/dev/personal/ \
 		-mindepth 0 -maxdepth 2 -type d | fzf)
 fi

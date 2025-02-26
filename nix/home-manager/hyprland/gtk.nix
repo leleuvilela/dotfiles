@@ -9,11 +9,13 @@
   catppuccin = {
     flavor = "mocha";
     enable = true;
+    starship = {
+      enable = true;
+    };
   };
 
   programs.starship = {
     enable = true;
-    catppuccin.enable = true;
   };
 
 }

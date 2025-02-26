@@ -36,7 +36,7 @@
   services.udisks2.enable = true;
   services.systembus-notify.enable = true;
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

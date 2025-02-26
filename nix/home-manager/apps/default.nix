@@ -36,7 +36,6 @@
     cider
     mission-center
     steam
-    morgen
     networkmanager
     spotify
   ];

@@ -1,9 +1,10 @@
+{config, lig, pkgs}:
 {
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       initial_session = {
-        command = "Hyprland";
+        command = "${pkgs.hyprland}/bin/Hyprland";
         user = "vinicius";
       };
       default_session = {

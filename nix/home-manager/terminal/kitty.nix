@@ -3,10 +3,10 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Caskaydia Cove Nerd Font";
+      name = "DankMono Nerd Font";
       size = 12;
     };
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     shellIntegration = {
       enableZshIntegration = true;
     };

@@ -3,15 +3,13 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     catppuccin.url = "github:catppuccin/nix";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
-    nix-ld.url = "github:Mic92/nix-ld";
-    nix-ld.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -21,7 +19,6 @@
     , nixpkgs-unstable
     , zen-browser
     , catppuccin
-    , nix-ld
     , ...
     } @ inputs:
     let
@@ -45,7 +42,6 @@
           pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true;};
         };
         modules = [
-          nix-ld.nixosModules.nix-ld
           ./hosts/desktop/configuration.nix
         ];
       };

@@ -12,7 +12,7 @@
       tmuxPlugins.resurrect
       tmuxPlugins.yank
       tmuxPlugins.vim-tmux-navigator
-      tmuxPlugins.catppuccin
+      tmuxPlugins.tokyo-night-tmux  
     ];
 
     extraConfig = ''
@@ -32,7 +32,7 @@
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
         
-        # Set 'v' for vertical and 'h' for horizontal split
+        # Set 'v' for vertical and 'b' for horizontal split
         bind v split-window -h -c '#{pane_current_path}'
         bind b split-window -v -c '#{pane_current_path}'
         
@@ -58,10 +58,10 @@
         bind -r l select-pane -R 
         
         # vim-like pane resizing  
-        bind -r C-k resize-pane -U
-        bind -r C-j resize-pane -D
-        bind -r C-h resize-pane -L
-        bind -r C-l resize-pane -R
+        bind -r C-k resize-pane -U 4
+        bind -r C-j resize-pane -D 4
+        bind -r C-h resize-pane -L 4
+        bind -r C-l resize-pane -R 4
         
         # vim-like window switching
         bind -n M-H previous-window 
@@ -87,7 +87,20 @@
         unbind C-Left
         unbind C-Right
 
-        set -g @catppuccin_flavour 'mocha'
+        # Setup tmux theme
+        set -g @tokyo-night-tmux_window_id_style fsquare
+        set -g @tokyo-night-tmux_pane_id_style hsquare
+        set -g @tokyo-night-tmux_zoom_id_style dsquare
+
+        # Undercurl
+        set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+        set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
+
+        # Toggle tmux status bar
+        bind '\' set status
+        if-shell "[[ $(tmux lsw | wc -l) -le 1 ]]" 'set -g status'
+
+        set -g status on
     '';
   };
 }

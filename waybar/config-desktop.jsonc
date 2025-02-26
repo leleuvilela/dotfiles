@@ -170,12 +170,12 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false,
-        "on-click": "alacritty -e htop"
+        "on-click": "kitty -e btop"
     },
     // Memory
     "memory": {
         "format": "{}% ",
-        "on-click": "alacritty -e htop"
+        "on-click": "kitty -e btop"
     },
     // Temperature
     "temperature": {

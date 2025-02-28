@@ -2,12 +2,9 @@
 {
   programs.git = {
     enable = true;
-    aliases = {
-      "clone-wt" = "!sh clone-wt";
-    };
     extraConfig = {
       user = {
-        name = "vinicius";
+        name = "Vinicius Vilela";
         email = "viniciusvilela19@gmail.com";
       };
       core = {
@@ -17,16 +14,16 @@
         directory = "*";
       };
       merge = {
-          tool = "nvim";
+        tool = "nvim";
       };
       mergetool = {
-          prompt = false;
-          nvim = {
-              cmd = "nvim -f -c \"Gdiffsplit!\" \"$MERGED\"";
-          };
+        prompt = false;
+        nvim = {
+          cmd = "nvim -f -c \"Gdiffsplit!\" \"$MERGED\"";
+        };
       };
     };
-    
+
     includes = [
       {
         condition = "gitdir:~/dev/personal/";
@@ -38,12 +35,11 @@
         };
       }
       {
-
-        condition = "gitdir:~/dev/farfetch/";
+        condition = "gitdir:~/dev/metyis/";
         contents = {
           user = {
-            name = "vinicius";
-            email = "ext.vinicius.nunes@farfetch.com";
+            name = "Vinicius Vilela";
+            email = "vinicius.vilela@criticalsoftware.com";
           };
         };
       }

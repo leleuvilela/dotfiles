@@ -3,7 +3,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../hosts/desktop/users/vinicius
+      ./users/vinicius
       ../../system/sddm
       ../../system/nix.nix
       ../../system/hyprland.nix
@@ -14,6 +14,7 @@
       ../../system/redshift.nix
       ../../system/fonts.nix
       ../../system/via.nix
+      ../../system/greetd.nix
     ];
 
   # Bootloader.

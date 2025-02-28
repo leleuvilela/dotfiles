@@ -1,12 +1,8 @@
 [user]
-	name = leleuvilela
+  name = "Vinicius Vilela"
 [includeIf "gitdir:~/dev/personal/"]
   path = .gitconfig-personal
-[includeIf "gitdir:~/dev/farfetch/"]
-  path = .gitconfig-farfetch
-
+[includeIf "gitdir:~/dev/metyis/"]
+  path = .gitconfig-metyis
 [core]
-	editor = nvim
-
-[alias]
-    clone-wt = "!sh clone-wt"
+  editor = nvim

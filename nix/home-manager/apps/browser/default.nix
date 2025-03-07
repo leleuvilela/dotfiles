@@ -1,8 +1,8 @@
-{ pkgs, pkgs-unstable,... }:
+{ pkgs,... }:
 {
   home.packages = with pkgs; [
     brave
-    pkgs-unstable.microsoft-edge
+    microsoft-edge
     firefox
   ];
 }

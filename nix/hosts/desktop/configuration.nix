@@ -16,6 +16,7 @@
       ../../system/fonts.nix
       ../../system/via.nix
       ../../system/network.nix
+      ../../system/greetd.nix
     ];
 
   environment = {

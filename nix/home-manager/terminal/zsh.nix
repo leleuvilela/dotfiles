@@ -45,6 +45,8 @@
 
       export NIXPKGS_ALLOW_UNFREE=1
       export NIXPKGS_ALLOW_INSECURE=1
+
+      export ANTHROPIC_API_KEY=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
       
       source ~/.env.sh
 

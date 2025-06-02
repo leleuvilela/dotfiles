@@ -39,7 +39,6 @@
     playerctl
     mono
     exfat
-    zlib
     nmap
     devenv
     w3m

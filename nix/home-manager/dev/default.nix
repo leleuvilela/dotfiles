@@ -27,8 +27,11 @@
     electron-fiddle
     electron
     pkgs-unstable.mockoon
-
     maven
+    dbeaver-bin
+    azure-cli
+    code-cursor
+    gh
 
     #raspbery
     rpiboot

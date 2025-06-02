@@ -3,10 +3,10 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    catppuccin.url = "github:catppuccin/nix";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    # catppuccin.url = "github:catppuccin/nix";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser.url = "github:MarceColl/zen-browser-flake";
@@ -18,13 +18,19 @@
     , home-manager
     , nixpkgs-unstable
     , zen-browser
-    , catppuccin
+    # , catppuccin
     , ...
     } @ inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      overlays = [
+        (import ./overlays/default.nix)
+      ];
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
@@ -56,7 +62,7 @@
           hyprlandProfile = "desktop";
         };
         modules = [
-          catppuccin.homeManagerModules.catppuccin
+          # catppuccin.homeManagerModules.catppuccin
           ./hosts/desktop/home.nix
         ];
       };

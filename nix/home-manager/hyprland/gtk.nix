@@ -6,13 +6,13 @@
     };
   };
 
-  catppuccin = {
-    flavor = "mocha";
-    enable = true;
-    starship = {
-      enable = true;
-    };
-  };
+  # catppuccin = {
+  #   flavor = "mocha";
+  #   enable = true;
+  #   starship = {
+  #     enable = true;
+  #   };
+  # };
 
   programs.starship = {
     enable = true;

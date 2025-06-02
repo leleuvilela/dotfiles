@@ -17,12 +17,10 @@
     networkmanagerapplet
     gnome-icon-theme
     pulseaudio
-    fira-code-nerdfont
-    nerdfonts
     libnotify
     catppuccin-gtk
     nwg-look
-    gnome.nautilus
+    nautilus
     grim
     slurp
     swappy

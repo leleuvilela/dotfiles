@@ -8,7 +8,6 @@
   ];
 
   home.packages = with pkgs; [
-    cinnamon.nemo-with-extensions
     slack
     obsidian
     pavucontrol
@@ -19,11 +18,11 @@
     evince
     sxiv
     teams-for-linux
-    gnome.file-roller
+    file-roller
     libreoffice
-    gnome.gnome-disk-utility
-    gnome.gnome-calculator
-    gnome.adwaita-icon-theme
+    gnome-disk-utility
+    gnome-calculator
+    adwaita-icon-theme
     mongodb-compass
     vesktop
     virtualbox
@@ -38,5 +37,8 @@
     steam
     networkmanager
     spotify
+    modrinth-app
+    duckstation
+    pinta
   ];
 }

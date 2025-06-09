@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, zen-browser, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   imports = [
     ./git
@@ -30,7 +30,6 @@
     vscode
     blueman
     solaar
-    zen-browser.packages.x86_64-linux.default
     atlauncher
     cider
     mission-center

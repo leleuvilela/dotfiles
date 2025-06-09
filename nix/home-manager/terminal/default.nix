@@ -49,5 +49,6 @@
     openssl
     gnumake
     hub
+    smartmontools
   ];
 }

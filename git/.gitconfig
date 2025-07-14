@@ -1,8 +1,0 @@
-[user]
-  name = "Vinicius Vilela"
-[includeIf "gitdir:~/dev/personal/"]
-  path = .gitconfig-personal
-[includeIf "gitdir:~/dev/metyis/"]
-  path = .gitconfig-metyis
-[core]
-  editor = nvim

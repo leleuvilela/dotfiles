@@ -94,7 +94,44 @@ eval "$(zoxide init zsh)"
 
 
 
+# fnm
+FNM_PATH="/home/vinicius/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/vinicius/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# android-sdk
+
+ANDROID_HOME='/opt/android-sdk'
+ANDROID_AVD_HOME='/home/vinicius/.config/.android/avd'
+export PATH="$ANDROID_HOME/tools/bin/:$PATH"
+export PATH="$ANDROID_HOME/platform-tools/:$PATH"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
+export PATH="$ANDROID_HOME/emulator:$PATH"
+
+
+export PATH="/home/vinicius/.local/bin:$PATH"
+export PATH="/home/vinicius/scritps/:$PATH"
+
+function yy() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+function killp(){
+    ps aux | fzf --height 40% --layout=reverse --prompt="Select a process to kill: " | awk '{print $2}' | xargs -r sudo kill
+}
+
 pokemon-colorscripts --no-title -s -r
 
 # Initialize Oh My Posh
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/viet.omp.json)"
+#
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

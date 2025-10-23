@@ -90,7 +90,7 @@ export BAT_THEME="base16"
 alias bat='bat --paging=never'
 
 # Setup zoxide (better than cd)
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 
 
@@ -101,18 +101,19 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # android-sdk
-
-ANDROID_HOME='/opt/android-sdk'
-ANDROID_AVD_HOME='/home/vinicius/.config/.android/avd'
-export PATH="$ANDROID_HOME/tools/bin/:$PATH"
-export PATH="$ANDROID_HOME/platform-tools/:$PATH"
-export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
-export PATH="$ANDROID_HOME/emulator:$PATH"
-
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
 export PATH="/home/vinicius/.local/bin:$PATH"
 export PATH="/home/vinicius/scritps/:$PATH"
+
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/bc/bin:$PATH"
 
 function yy() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -127,11 +128,17 @@ function killp(){
     ps aux | fzf --height 40% --layout=reverse --prompt="Select a process to kill: " | awk '{print $2}' | xargs -r sudo kill
 }
 
-pokemon-colorscripts --no-title -s -r
-
 # Initialize Oh My Posh
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/viet.omp.json)"
 #
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# bun completions
+[ -s "/Users/leleuvilela/.bun/_bun" ] && source "/Users/leleuvilela/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

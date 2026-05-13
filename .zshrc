@@ -84,6 +84,7 @@ alias lt='eza --icons --color=always -a --tree --level=1'
 alias grep='grep --color=always'
 alias vim='nvim'
 alias cbonsai='cbonsai -l -i -w 1'
+alias cspaces='~/.config/yabai/scripts/create_spaces.sh'
 
 # Setup bat (better than cat)
 export BAT_THEME="base16"
@@ -102,6 +103,7 @@ if [ -d "$FNM_PATH" ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin/nvim/bin:$PATH"
 
 # android-sdk
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"

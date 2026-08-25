@@ -32,7 +32,7 @@ config-file = ghostty-theme
 # custom-shader = shaders/bloom1.glsl
 # custom-shader = shaders/bloom075.glsl
 # custom-shader = shaders/bloom060.glsl
-custom-shader = shaders/bloom050.glsl
+# custom-shader = shaders/bloom050.glsl
 # custom-shader = shaders/bloom025.glsl
 # custom-shader = shaders/bloom050.glsl
 # custom-shader = shaders/bloom060.glsl
@@ -62,9 +62,10 @@ custom-shader = shaders/bloom050.glsl
 # custom-shader = shaders/underwater.glsl
 # custom-shader = shaders/water.glsl
 # custom-shader = shaders/cursor_blaze.glsl
-custom-shader = shaders/cursor_blaze_no_trail.glsl
+# custom-shader = shaders/cursor_blaze_no_trail.glsl
 # custom-shader = shaders/cursor_smear.glsl
 # custom-shader = shaders/cursor_smear_fade.glsl
+custom-shader = shaders/cursor_tail.glsl
 
 # The command to run, usually a shell. If this is not an absolute path, it'll
 # be looked up in the `PATH`. If this is not set, a default will be looked up
@@ -103,7 +104,7 @@ custom-shader = shaders/cursor_blaze_no_trail.glsl
 # echo '' >>~/.zprofile && echo '# Configure shell for brew' >>~/.zprofile && echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >>~/.zprofile && eval "$(/opt/homebrew/bin/brew shellenv)"
 #
 # This assumes you installed tmux through brew if using macos
-command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
+# command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi"
 # command = zsh --login -c "if command -v tmux >/dev/null 2>&1; then $HOME/github/dotfiles-latest/tmux/tools/prime/tmux-sessionizer.sh $HOME/github/dotfiles-latest || (tmux attach 2>/dev/null || tmux); else exec zsh; fi"
 
 # Horizontal window padding. This applies padding between the terminal cells

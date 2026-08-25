@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+DESIRED_SPACES_PER_DISPLAY=5
+
+die() {
+  printf '%s\n' "$*" >&2
+  exit 1
+}
+
+command -v yabai >/dev/null 2>&1 || die "yabai is not installed or is not in PATH."
+command -v jq >/dev/null 2>&1 || die "jq is not installed or is not in PATH."
+
+run_yabai() {
+  OUTPUT="$(yabai -m "$@" 2>&1)"
+  STATUS=$?
+
+  if [ "$STATUS" -ne 0 ]; then
+    printf '%s\n' "$OUTPUT" >&2
+
+    case "$OUTPUT" in
+    *"scripting-addition"*)
+      printf '%s\n' "Try reloading the yabai scripting addition, then rerun this script:" >&2
+      printf '%s\n' "  sudo yabai --load-sa" >&2
+      printf '%s\n' "  brew services restart yabai" >&2
+      ;;
+    esac
+
+    exit "$STATUS"
+  fi
+
+  printf '%s\n' "$OUTPUT"
+}
+
+# Reloading is required after Dock restarts and after many macOS/yabai updates.
+# sudo -n keeps the script non-interactive if sudo has not been authenticated.
+sudo -n yabai --load-sa >/dev/null 2>&1 || true
+
+DISPLAYS_JSON="$(run_yabai query --displays)" || exit $?
+DISPLAYS_DATA="$(printf '%s\n' "$DISPLAYS_JSON" | jq -r '.[] | "\(.index):\(.spaces | join(" "))"')"
+
+DELTA=0
+while read -r line; do
+  DISPLAY_INDEX="$(echo "$line" | cut -d: -f1)"
+  SPACES_LINE="$(echo "$line" | cut -d: -f2-)"
+
+  LAST_SPACE="$(echo "${SPACES_LINE##* }")"
+  LAST_SPACE=$(($LAST_SPACE + $DELTA))
+  EXISTING_SPACE_COUNT="$(echo "$SPACES_LINE" | wc -w)"
+  MISSING_SPACES=$(($DESIRED_SPACES_PER_DISPLAY - $EXISTING_SPACE_COUNT))
+
+  if [ "$MISSING_SPACES" -gt 0 ]; then
+    for i in $(seq 1 $MISSING_SPACES); do
+      run_yabai space --create "$DISPLAY_INDEX" >/dev/null
+      LAST_SPACE=$(($LAST_SPACE + 1))
+    done
+  elif [ "$MISSING_SPACES" -lt 0 ]; then
+    for i in $(seq 1 $((-$MISSING_SPACES))); do
+      run_yabai space --destroy "$LAST_SPACE" >/dev/null
+      LAST_SPACE=$(($LAST_SPACE - 1))
+    done
+  fi
+  DELTA=$(($DELTA + $MISSING_SPACES))
+done <<<"$DISPLAYS_DATA"
+
+# Rename spaces based on number of displays
+DISPLAYS_JSON="$(run_yabai query --displays)" || exit $?
+DISPLAY_COUNT="$(printf '%s\n' "$DISPLAYS_JSON" | jq 'length')"
+DISPLAYS_INFO="$(printf '%s\n' "$DISPLAYS_JSON" | jq -r '.[] | "\(.index):\(.spaces | join(" "))"')"
+
+if [ "$DISPLAY_COUNT" -eq 2 ]; then
+  # Two displays active
+  DISPLAY_NUM=0
+  while read -r display_line; do
+    DISPLAY_NUM=$(($DISPLAY_NUM + 1))
+    SPACES="$(echo "$display_line" | cut -d: -f2)"
+    SPACE_NUM=0
+    for space in $SPACES; do
+      SPACE_NUM=$(($SPACE_NUM + 1))
+      if [ "$DISPLAY_NUM" -eq 1 ]; then
+        # First display: 1=teams, 2=whatsapp, 3=notes, rest=misc
+        case $SPACE_NUM in
+        1) run_yabai space "$space" --label "teams" >/dev/null ;;
+        2) run_yabai space "$space" --label "whatsapp" >/dev/null ;;
+        3) run_yabai space "$space" --label "notes" >/dev/null ;;
+        *) run_yabai space "$space" --label "misc" >/dev/null ;;
+        esac
+      else
+        # Second display: 1=terminal, 2=browser, rest=misc
+        case $SPACE_NUM in
+        1) run_yabai space "$space" --label "terminal" >/dev/null ;;
+        2) run_yabai space "$space" --label "browser zen" >/dev/null ;;
+        *) run_yabai space "$space" --label "misc" >/dev/null ;;
+        esac
+      fi
+    done
+  done <<<"$DISPLAYS_INFO"
+else
+  # Single display: 1=terminal, 2=browser, 3=teams, 4=whatsapp, 5=notes, rest=misc
+  SPACES_JSON="$(run_yabai query --spaces)" || exit $?
+  ALL_SPACES="$(printf '%s\n' "$SPACES_JSON" | jq -r '.[].index')"
+  SPACE_NUM=0
+  for space in $ALL_SPACES; do
+    SPACE_NUM=$(($SPACE_NUM + 1))
+    case $SPACE_NUM in
+    1) run_yabai space "$space" --label "terminal" >/dev/null ;;
+    2) run_yabai space "$space" --label "browser zen" >/dev/null ;;
+    3) run_yabai space "$space" --label "teams" >/dev/null ;;
+    4) run_yabai space "$space" --label "whatsapp" >/dev/null ;;
+    5) run_yabai space "$space" --label "notes" >/dev/null ;;
+    *) run_yabai space "$space" --label "misc" >/dev/null ;;
+    esac
+  done
+fi

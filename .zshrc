@@ -84,7 +84,6 @@ alias lt='eza --icons --color=always -a --tree --level=1'
 alias grep='grep --color=always'
 alias vim='nvim'
 alias cbonsai='cbonsai -l -i -w 1'
-alias cspaces='~/.config/yabai/scripts/create_spaces.sh'
 
 # Setup bat (better than cat)
 export BAT_THEME="base16"
@@ -111,7 +110,6 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
 export PATH="/home/vinicius/.local/bin:$PATH"
-export PATH="/home/vinicius/scritps/:$PATH"
 
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -141,6 +139,20 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # bun completions
 [ -s "/Users/leleuvilela/.bun/_bun" ] && source "/Users/leleuvilela/.bun/_bun"
 
+# mise
+eval "$(~/.local/bin/mise activate zsh)"
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# keys (not tracked in git — see .zshrc.secrets)
+[ -f "$HOME/dotfiles/.zshrc.secrets" ] && source "$HOME/dotfiles/.zshrc.secrets"
+
+# pnpm
+export PNPM_HOME="/Users/leleuvilela/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

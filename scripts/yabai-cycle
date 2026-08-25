@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Focus the previous window in the current space (cycles through standard windows).
+
+cur=$(yabai -m query --windows --window | jq -re '.id') || exit 1
+
+yabai -m window --focus "$(yabai -m query --windows --space | jq -re --argjson cur "$cur" '
+  [sort_by(.id, .frame) | reverse | .[]
+   | select(.role == "AXWindow" and .subrole == "AXStandardWindow") | .id]
+  | nth(index($cur) - 1)')"

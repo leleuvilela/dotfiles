@@ -113,3 +113,22 @@ else
     esac
   done
 fi
+
+# Move known apps to their labeled spaces
+declare -A APP_SPACE=(
+  ["Ghostty"]="terminal"
+  ["Zen"]="browser zen"
+  ["Microsoft Teams"]="teams"
+  ["WhatsApp"]="whatsapp"
+  ["Notes"]="notes"
+)
+
+WINDOWS_JSON="$(run_yabai query --windows)" || exit $?
+
+for app in "${!APP_SPACE[@]}"; do
+  TARGET_LABEL="${APP_SPACE[$app]}"
+  WINDOW_IDS="$(printf '%s\n' "$WINDOWS_JSON" | jq -r --arg app "$app" '.[] | select(.app | contains($app)) | .id')"
+  for wid in $WINDOW_IDS; do
+    yabai -m window "$wid" --space "$TARGET_LABEL" >/dev/null 2>&1
+  done
+done

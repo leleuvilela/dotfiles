@@ -24,7 +24,7 @@ lalt - m : /Users/leleuvilela/dotfiles/scripts/yabai-cycle
 # Focus: named spaces
 # ---------------------------------------------------------------------------
 lalt - return : yabai -m space --focus terminal
-lalt - e      : yabai -m space --focus browser
+lalt - e      : yabai -m space --focus "browser zen"
 lalt - t      : yabai -m space --focus teams
 lalt - w      : yabai -m space --focus whatsapp
 lalt - n      : yabai -m space --focus notes
@@ -73,7 +73,7 @@ shift + lalt - 5 : SPACES=($(yabai -m query --displays --display | jq '.spaces[]
 # Move: send window to named space (and follow)
 # ---------------------------------------------------------------------------
 shift + lalt - return : yabai -m window --space terminal && yabai -m space --focus terminal
-shift + lalt - e      : yabai -m window --space browser  && yabai -m space --focus browser
+shift + lalt - e      : yabai -m window --space "browser zen" && yabai -m space --focus "browser zen"
 shift + lalt - t      : yabai -m window --space teams    && yabai -m space --focus teams
 shift + lalt - w      : yabai -m window --space whatsapp && yabai -m space --focus whatsapp
 shift + lalt - n      : yabai -m window --space notes    && yabai -m space --focus notes

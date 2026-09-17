@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-DESIRED_SPACES_PER_DISPLAY=5
+DESIRED_SPACES_PER_DISPLAY=7
 
 die() {
   printf '%s\n' "$*" >&2
@@ -84,6 +84,7 @@ if [ "$DISPLAY_COUNT" -eq 2 ]; then
         1) run_yabai space "$space" --label "teams" >/dev/null ;;
         2) run_yabai space "$space" --label "whatsapp" >/dev/null ;;
         3) run_yabai space "$space" --label "notes" >/dev/null ;;
+        4) run_yabai space "$space" --label "meeting" >/dev/null ;;
         *) run_yabai space "$space" --label "misc" >/dev/null ;;
         esac
       else
@@ -91,6 +92,7 @@ if [ "$DISPLAY_COUNT" -eq 2 ]; then
         case $SPACE_NUM in
         1) run_yabai space "$space" --label "terminal" >/dev/null ;;
         2) run_yabai space "$space" --label "browser zen" >/dev/null ;;
+        3) run_yabai space "$space" --label "spotify" >/dev/null ;;
         *) run_yabai space "$space" --label "misc" >/dev/null ;;
         esac
       fi
@@ -109,6 +111,8 @@ else
     3) run_yabai space "$space" --label "teams" >/dev/null ;;
     4) run_yabai space "$space" --label "whatsapp" >/dev/null ;;
     5) run_yabai space "$space" --label "notes" >/dev/null ;;
+    6) run_yabai space "$space" --label "spotify" >/dev/null ;;
+    7) run_yabai space "$space" --label "meeting" >/dev/null ;;
     *) run_yabai space "$space" --label "misc" >/dev/null ;;
     esac
   done

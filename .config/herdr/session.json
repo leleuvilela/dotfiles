@@ -1,0 +1,279 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w6",
+      "custom_name": null,
+      "identity_cwd": "/Users/vinicius",
+      "public_pane_numbers": {
+        "1": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/vinicius"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "w8",
+      "custom_name": "oneshop-fe",
+      "identity_cwd": "/Users/vinicius/dev/bmw/oneshop-fe",
+      "public_pane_numbers": {
+        "34": 12,
+        "50": 17,
+        "9": 2,
+        "49": 16,
+        "35": 13,
+        "14": 4
+      },
+      "next_public_pane_number": 18,
+      "public_tab_numbers": [
+        2,
+        4,
+        7,
+        9
+      ],
+      "next_public_tab_number": 10,
+      "tabs": [
+        {
+          "custom_name": "claude",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5859375,
+              "first": {
+                "Pane": 9
+              },
+              "second": {
+                "Pane": 50
+              }
+            }
+          },
+          "panes": {
+            "9": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-fe"
+            },
+            "50": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-fe"
+            }
+          },
+          "zoomed": false,
+          "focused": 9,
+          "root_pane": 9
+        },
+        {
+          "custom_name": "nvim",
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.70000005,
+              "first": {
+                "Pane": 14
+              },
+              "second": {
+                "Pane": 34
+              }
+            }
+          },
+          "panes": {
+            "14": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-fe"
+            },
+            "34": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-fe"
+            }
+          },
+          "zoomed": false,
+          "focused": 14,
+          "root_pane": 14
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 35
+          },
+          "panes": {
+            "35": {
+              "cwd": "/Users/vinicius/dev/bmw"
+            }
+          },
+          "zoomed": false,
+          "focused": 35,
+          "root_pane": 35
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 49
+          },
+          "panes": {
+            "49": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-fe"
+            }
+          },
+          "zoomed": false,
+          "focused": 49,
+          "root_pane": 49
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "wC",
+      "custom_name": "dotfiles",
+      "identity_cwd": "/Users/vinicius/dotfiles",
+      "public_pane_numbers": {
+        "63": 3,
+        "27": 2
+      },
+      "next_public_pane_number": 4,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 27
+          },
+          "panes": {
+            "27": {
+              "cwd": "/Users/vinicius/dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 27,
+          "root_pane": 27
+        },
+        {
+          "custom_name": "codex",
+          "layout": {
+            "Pane": 63
+          },
+          "panes": {
+            "63": {
+              "cwd": "/Users/vinicius/dotfiles"
+            }
+          },
+          "zoomed": false,
+          "focused": 63,
+          "root_pane": 63
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "wH",
+      "custom_name": "oneshop-libs",
+      "identity_cwd": "/Users/vinicius/dev/bmw/oneshop-libs",
+      "public_pane_numbers": {
+        "58": 1,
+        "64": 3,
+        "59": 2
+      },
+      "next_public_pane_number": 4,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 58
+          },
+          "panes": {
+            "58": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-libs"
+            }
+          },
+          "zoomed": false,
+          "focused": 58,
+          "root_pane": 58
+        },
+        {
+          "custom_name": null,
+          "layout": {
+            "Split": {
+              "direction": "Horizontal",
+              "ratio": 0.5,
+              "first": {
+                "Pane": 59
+              },
+              "second": {
+                "Pane": 64
+              }
+            }
+          },
+          "panes": {
+            "59": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-libs"
+            },
+            "64": {
+              "cwd": "/Users/vinicius/dev/bmw/oneshop-libs"
+            }
+          },
+          "zoomed": false,
+          "focused": 59,
+          "root_pane": 59
+        }
+      ],
+      "active_tab": 1
+    },
+    {
+      "id": "wJ",
+      "custom_name": "personal",
+      "identity_cwd": "/Users/vinicius/dev/personal",
+      "public_pane_numbers": {
+        "61": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 61
+          },
+          "panes": {
+            "61": {
+              "cwd": "/Users/vinicius/dev/personal"
+            }
+          },
+          "zoomed": false,
+          "focused": 61,
+          "root_pane": 61
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 2,
+  "selected": 2,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

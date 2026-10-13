@@ -18,7 +18,7 @@ lalt - k : yabai -m window --focus north || yabai -m display --focus north
 lalt - l : yabai -m window --focus east  || yabai -m display --focus east || /Users/leleuvilela/dotfiles/scripts/yabai-cycle
 
 # Cycle windows in the current space
-lalt - m : /Users/leleuvilela/dotfiles/scripts/yabai-cycle
+lalt - c : /Users/leleuvilela/dotfiles/scripts/yabai-cycle
 
 # ---------------------------------------------------------------------------
 # Focus: named spaces
@@ -79,7 +79,7 @@ shift + lalt - e      : yabai -m window --space "browser zen" && yabai -m space 
 shift + lalt - t      : yabai -m window --space teams    && yabai -m space --focus teams
 shift + lalt - w      : yabai -m window --space whatsapp && yabai -m space --focus whatsapp
 shift + lalt - n      : yabai -m window --space notes    && yabai -m space --focus notes
-shift + lalt - m      : yabai -m window --space meeting    && yabai -m space --focus meeting
+shift + lalt - m      : yabai -m window --space meeting  && yabai -m space --focus meeting
 
 # Send window to prev / next space: shift + lalt - { [ , ] }
 shift + lalt - 0x21 : yabai -m window --space prev && yabai -m space --focus prev
@@ -113,4 +113,4 @@ shift + ctrl + lalt - l : yabai -m window --insert east
 shift + ctrl + lalt - s : yabai -m window --insert stack
 
 # Recreate + relabel spaces
-shift + ctrl + lalt - c : /Users/leleuvilela/dotfiles/scripts/cspaces
+shift + ctrl + lalt - c : /Users/vinicius/dotfiles/scripts/cspaces

@@ -1,16 +1,16 @@
 * {
-    background: #1e1e2e;
-    foreground: #cdd6f4;
-    select: #585b70;
+    background: #282828;
+    foreground: #ebdbb2;
+    select: #665c54;
 
-    pink: #f5c2e7;
-    purple: #cba6f7;
-    red: #f38ba8;
-    orange: #fab387;
-    yellow: #f9e2af;
-    green: #a6e3a1;
-    blue: #89b4fa;
-    gray: #45475a;
+    pink: #d3869b;
+    purple: #d3869b;
+    red: #fb4934;
+    orange: #fe8019;
+    yellow: #fabd2f;
+    green: #b8bb26;
+    blue: #83a598;
+    gray: #504945;
 
     active-background: @select;
     urgent-background: @red;

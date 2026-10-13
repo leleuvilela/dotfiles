@@ -1,7 +1,12 @@
 # Created by Phunt_Vieg_
 # autoload -Uz zsh-newuser-install
 # zsh-newuser-install -f# Lines configured by zsh-newuser-install
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
 
+source $ZSH/oh-my-zsh.sh
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -25,12 +30,12 @@ eval "$(fzf --zsh)"
 
 # fzf theme
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
-export FZF_TAB_COLORS='fg:#CDD6F4,bg:#1E1E2E,hl:#F38BA8,min-height=5'
+--color=bg+:#3c3836,bg:#282828,spinner:#fbf1c7,hl:#fb4934 \
+--color=fg:#ebdbb2,header:#fb4934,info:#d3869b,pointer:#fbf1c7 \
+--color=marker:#83a598,fg+:#ebdbb2,prompt:#d3869b,hl+:#fb4934 \
+--color=selected-bg:#504945 \
+--color=border:#3c3836,label:#ebdbb2"
+export FZF_TAB_COLORS='fg:#ebdbb2,bg:#282828,hl:#fb4934,min-height=5'
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -91,6 +96,7 @@ alias bat='bat --paging=never'
 
 # Setup zoxide (better than cd)
 eval "$(zoxide init zsh --cmd cd)"
+eval "$(/Users/vinicius/.local/bin/mise activate zsh)"
 
 
 
@@ -128,8 +134,6 @@ function killp(){
     ps aux | fzf --height 40% --layout=reverse --prompt="Select a process to kill: " | awk '{print $2}' | xargs -r sudo kill
 }
 
-# Initialize Oh My Posh
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/viet.omp.json)"
 #
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

@@ -15,8 +15,14 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
+# herdr passes HERDR_BIN_PATH to custom commands; fall back to it when
+# the popup shell does not have herdr on PATH.
+if ! command -v herdr >/dev/null 2>&1 && [[ -x $HERDR_BIN_PATH ]]; then
+  herdr() { "$HERDR_BIN_PATH" "$@"; }
+fi
+
 use_herdr() {
-  [[ -n $HERDR_ENV ]] && return 0
+  [[ -n $HERDR_ENV || -n $HERDR_SOCKET_PATH ]] && return 0
   [[ -n $TMUX ]] && return 1
   command -v herdr >/dev/null 2>&1 || return 1
   herdr workspace list >/dev/null 2>&1
@@ -25,8 +31,8 @@ use_herdr() {
 if use_herdr; then
   ws_id=$(herdr workspace list 2>/dev/null |
     jq -r --arg label "$selected_name" \
-      '(if type=="array" then . else .workspaces end)
-         | .[] | select(.label==$label) | .id' |
+      '(.result.workspaces // .workspaces // .)
+         | .[] | select(.label==$label) | (.workspace_id // .id)' |
     head -n1)
 
   if [[ -n $ws_id ]]; then

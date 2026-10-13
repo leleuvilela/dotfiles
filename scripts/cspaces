@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
+#
+# Create, label and populate yabai spaces.
+#
+# Runs from yabairc on every yabai restart and from skhd (shift+ctrl+lalt-c).
+# Must stay compatible with macOS's stock bash 3.2 (no associative arrays,
+# no mapfile), because /usr/bin/env bash resolves to /bin/bash on this machine.
 
 set -o pipefail
 
 DESIRED_SPACES_PER_DISPLAY=7
 
+# app name substring | space label
+APP_SPACE_MAP='
+Ghostty|terminal
+Zen|browser zen
+Microsoft Teams|teams
+WhatsApp|whatsapp
+Notes|notes
+'
+
 die() {
   printf '%s\n' "$*" >&2
   exit 1
+}
+
+warn() {
+  printf '%s\n' "$*" >&2
 }
 
 command -v yabai >/dev/null 2>&1 || die "yabai is not installed or is not in PATH."
@@ -23,7 +42,7 @@ run_yabai() {
     *"scripting-addition"*)
       printf '%s\n' "Try reloading the yabai scripting addition, then rerun this script:" >&2
       printf '%s\n' "  sudo yabai --load-sa" >&2
-      printf '%s\n' "  brew services restart yabai" >&2
+      printf '%s\n' "  yabai --restart-service" >&2
       ;;
     esac
 
@@ -31,6 +50,37 @@ run_yabai() {
   fi
 
   printf '%s\n' "$OUTPUT"
+}
+
+space_count() {
+  yabai -m query --spaces | jq 'length'
+}
+
+# Creating/destroying spaces goes through the scripting addition, which patches
+# the Dock with byte patterns specific to each macOS version. When yabai is
+# older than the running macOS, `space --create` and `space --destroy` exit 0
+# but do nothing. Detect that by checking the space count actually changed.
+SPACE_OPS_BROKEN=0
+space_op() {
+  # $1 = create|destroy, remaining args passed to yabai
+  local op="$1"
+  shift
+  local before after
+  before="$(space_count)"
+  run_yabai space "--$op" "$@" >/dev/null
+  after="$(space_count)"
+  if [ "$before" -eq "$after" ]; then
+    SPACE_OPS_BROKEN=1
+    warn "yabai -m space --$op $* exited 0 but the number of spaces is still $after."
+    warn "The scripting addition cannot $op spaces on macOS $(sw_vers -productVersion) with $(yabai --version)."
+    warn "Update yabai (and reinstall its scripting addition), then rerun this script:"
+    warn "  yabai --stop-service && brew uninstall yabai && brew install --HEAD asmvik/formulae/yabai"
+    warn "  sudo yabai --uninstall-sa && sudo yabai --install-sa"
+    warn "  yabai --start-service"
+    warn "Continuing with labels and window placement on the spaces that exist."
+    return 1
+  fi
+  return 0
 }
 
 # Reloading is required after Dock restarts and after many macOS/yabai updates.
@@ -42,26 +92,29 @@ DISPLAYS_DATA="$(printf '%s\n' "$DISPLAYS_JSON" | jq -r '.[] | "\(.index):\(.spa
 
 DELTA=0
 while read -r line; do
-  DISPLAY_INDEX="$(echo "$line" | cut -d: -f1)"
-  SPACES_LINE="$(echo "$line" | cut -d: -f2-)"
+  [ -n "$line" ] || continue
+  DISPLAY_INDEX="${line%%:*}"
+  SPACES_LINE="${line#*:}"
 
-  LAST_SPACE="$(echo "${SPACES_LINE##* }")"
-  LAST_SPACE=$(($LAST_SPACE + $DELTA))
-  EXISTING_SPACE_COUNT="$(echo "$SPACES_LINE" | wc -w)"
-  MISSING_SPACES=$(($DESIRED_SPACES_PER_DISPLAY - $EXISTING_SPACE_COUNT))
+  LAST_SPACE="${SPACES_LINE##* }"
+  LAST_SPACE=$((LAST_SPACE + DELTA))
+  EXISTING_SPACE_COUNT="$(printf '%s\n' "$SPACES_LINE" | wc -w | tr -d ' ')"
+  MISSING_SPACES=$((DESIRED_SPACES_PER_DISPLAY - EXISTING_SPACE_COUNT))
 
   if [ "$MISSING_SPACES" -gt 0 ]; then
-    for i in $(seq 1 $MISSING_SPACES); do
-      run_yabai space --create "$DISPLAY_INDEX" >/dev/null
-      LAST_SPACE=$(($LAST_SPACE + 1))
+    for _ in $(seq 1 "$MISSING_SPACES"); do
+      [ "$SPACE_OPS_BROKEN" -eq 0 ] || break
+      space_op create "$DISPLAY_INDEX" || break
+      LAST_SPACE=$((LAST_SPACE + 1))
     done
   elif [ "$MISSING_SPACES" -lt 0 ]; then
-    for i in $(seq 1 $((-$MISSING_SPACES))); do
-      run_yabai space --destroy "$LAST_SPACE" >/dev/null
-      LAST_SPACE=$(($LAST_SPACE - 1))
+    for _ in $(seq 1 $((-MISSING_SPACES))); do
+      [ "$SPACE_OPS_BROKEN" -eq 0 ] || break
+      space_op destroy "$LAST_SPACE" || break
+      LAST_SPACE=$((LAST_SPACE - 1))
     done
   fi
-  DELTA=$(($DELTA + $MISSING_SPACES))
+  DELTA=$((DELTA + MISSING_SPACES))
 done <<<"$DISPLAYS_DATA"
 
 # Rename spaces based on number of displays
@@ -73,13 +126,14 @@ if [ "$DISPLAY_COUNT" -eq 2 ]; then
   # Two displays active
   DISPLAY_NUM=0
   while read -r display_line; do
-    DISPLAY_NUM=$(($DISPLAY_NUM + 1))
-    SPACES="$(echo "$display_line" | cut -d: -f2)"
+    [ -n "$display_line" ] || continue
+    DISPLAY_NUM=$((DISPLAY_NUM + 1))
+    SPACES="${display_line#*:}"
     SPACE_NUM=0
     for space in $SPACES; do
-      SPACE_NUM=$(($SPACE_NUM + 1))
+      SPACE_NUM=$((SPACE_NUM + 1))
       if [ "$DISPLAY_NUM" -eq 1 ]; then
-        # First display: 1=teams, 2=whatsapp, 3=notes, rest=misc
+        # First display: 1=teams, 2=whatsapp, 3=notes, 4=meeting, rest=misc
         case $SPACE_NUM in
         1) run_yabai space "$space" --label "teams" >/dev/null ;;
         2) run_yabai space "$space" --label "whatsapp" >/dev/null ;;
@@ -88,7 +142,7 @@ if [ "$DISPLAY_COUNT" -eq 2 ]; then
         *) run_yabai space "$space" --label "misc" >/dev/null ;;
         esac
       else
-        # Second display: 1=terminal, 2=browser, rest=misc
+        # Second display: 1=terminal, 2=browser, 3=spotify, rest=misc
         case $SPACE_NUM in
         1) run_yabai space "$space" --label "terminal" >/dev/null ;;
         2) run_yabai space "$space" --label "browser zen" >/dev/null ;;
@@ -99,12 +153,12 @@ if [ "$DISPLAY_COUNT" -eq 2 ]; then
     done
   done <<<"$DISPLAYS_INFO"
 else
-  # Single display: 1=terminal, 2=browser, 3=teams, 4=whatsapp, 5=notes, rest=misc
+  # Single display: 1=terminal, 2=browser, 3=teams, 4=whatsapp, 5=notes, 6=spotify, 7=meeting, rest=misc
   SPACES_JSON="$(run_yabai query --spaces)" || exit $?
   ALL_SPACES="$(printf '%s\n' "$SPACES_JSON" | jq -r '.[].index')"
   SPACE_NUM=0
   for space in $ALL_SPACES; do
-    SPACE_NUM=$(($SPACE_NUM + 1))
+    SPACE_NUM=$((SPACE_NUM + 1))
     case $SPACE_NUM in
     1) run_yabai space "$space" --label "terminal" >/dev/null ;;
     2) run_yabai space "$space" --label "browser zen" >/dev/null ;;
@@ -118,21 +172,21 @@ else
   done
 fi
 
-# Move known apps to their labeled spaces
-declare -A APP_SPACE=(
-  ["Ghostty"]="terminal"
-  ["Zen"]="browser zen"
-  ["Microsoft Teams"]="teams"
-  ["WhatsApp"]="whatsapp"
-  ["Notes"]="notes"
-)
-
+# Move known apps to their labeled spaces. Only labels that exist are targeted,
+# so this degrades gracefully when fewer spaces than desired could be created.
 WINDOWS_JSON="$(run_yabai query --windows)" || exit $?
+EXISTING_LABELS="$(yabai -m query --spaces | jq -r '.[].label')"
 
-for app in "${!APP_SPACE[@]}"; do
-  TARGET_LABEL="${APP_SPACE[$app]}"
+while IFS='|' read -r app target_label; do
+  [ -n "$app" ] || continue
+  if ! printf '%s\n' "$EXISTING_LABELS" | grep -qxF "$target_label"; then
+    warn "No space labeled '$target_label' exists; not moving $app windows."
+    continue
+  fi
   WINDOW_IDS="$(printf '%s\n' "$WINDOWS_JSON" | jq -r --arg app "$app" '.[] | select(.app | contains($app)) | .id')"
   for wid in $WINDOW_IDS; do
-    yabai -m window "$wid" --space "$TARGET_LABEL" >/dev/null 2>&1
+    yabai -m window "$wid" --space "$target_label" >/dev/null 2>&1
   done
-done
+done <<<"$APP_SPACE_MAP"
+
+[ "$SPACE_OPS_BROKEN" -eq 0 ] || exit 1

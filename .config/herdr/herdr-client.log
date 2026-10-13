@@ -1,0 +1,32 @@
+2026-09-17T10:12:45.494173Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=13358
+2026-09-17T10:12:45.494208Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-17T10:12:45.726408Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-17T10:36:56.766071Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=13358
+2026-09-17T10:45:54.111618Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=25539
+2026-09-17T10:45:54.111829Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-17T10:45:54.121116Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-17T11:13:31.538117Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=25539
+2026-09-17T11:19:16.127835Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=1488
+2026-09-17T11:19:16.128012Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-17T11:19:16.341771Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-17T11:35:53.342238Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=1488
+2026-09-17T11:37:29.037198Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=6350
+2026-09-17T11:37:29.037232Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-17T11:37:29.241912Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-18T11:01:09.171725Z  INFO herdr::client: client terminal unavailable; detaching err=Inappropriate ioctl for device (os error 25)
+2026-09-18T11:01:09.172471Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=6350
+2026-09-18T11:06:12.237511Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=63587
+2026-09-18T11:06:12.238058Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-18T11:06:12.278783Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-18T11:07:18.442891Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=63587
+2026-09-18T11:07:20.135364Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=64118
+2026-09-18T11:07:20.135395Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-18T11:07:20.332717Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-09-24T11:00:50.775447Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=64118
+2026-09-24T11:00:53.038058Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=83408
+2026-09-24T11:00:53.038098Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-09-24T11:00:53.043313Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
+2026-10-13T08:49:01.839646Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=83408
+2026-10-13T08:49:10.125249Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=18124
+2026-10-13T08:49:10.125402Z  INFO herdr::client: connecting to server path=/Users/vinicius/.config/herdr/herdr-client.sock
+2026-10-13T08:49:10.200878Z  INFO herdr::client::handshake: endpoint handshake succeeded generation=1 server_version=0.9.1
